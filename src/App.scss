@@ -1,0 +1,69 @@
+/*
+  Todoist
+*/
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700,900');
+
+// General Settings
+
+html {
+  // box-sizing property includes padding and border in element's total width and height
+  // good idea to apply this to every element
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit; // inherit from parent element
+}
+
+body {
+  margin: 0; // border-box makes this defunct; same with padding
+  padding: 0;
+  line-height: 1;
+  font-family: 'Roboto', sans-serif;
+  color: #202020;
+  background-color: #fafafa;
+  font-smooth: always; // reference: https://developer.mozilla.org/en-US/docs/Web/CSS/font-smooth
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+// Variables
+$generic-box-shadow: rgba(0,0,0,0.1) 0px 0px 0px 1px, rgba(0,0,0,0.1) 0px 4px 11px;
+$generic-border: 1px solid #f1f1f1;
+$generic-bg: #db4c3f;
+
+/* Mixins - ways to inject styles wherever
+*/
+@mixin box-overlay() {
+  box-shadow: $generic-box-shadow;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+  top: 85px;
+  border-radius: 3px;
+}
+
+@mixin va($va-align: center) { // pass in variable, default is center
+  display: flex;
+  align-items: center;
+
+  @if $va-align != center {
+    justify-content: left;
+  } @else {
+    justify-content: center;
+  }
+}
+
+@mixin no-select { // cannot highlight element with cursor
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}

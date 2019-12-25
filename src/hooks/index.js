@@ -54,7 +54,7 @@ export const useTasks = selectedProject => {
 export const useProjects = () => { // checks with get() since it doesn't change often
   const [projects, setProjects] = useState([]);
 
-  useEffects(() => {
+  useEffect(() => {
     firebase
 			.firestore()
 			.collection('projects')
