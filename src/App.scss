@@ -149,10 +149,13 @@ header {
   nav {
     display: grid;
     align-items: center;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr; // fr - fraction of available space in container
     grid-template-rows: 1fr;
     grid-column-gap: 0px;
     grid-row-gap: 0px;
+    max-width: 922px;
+    margin: auto; // center element horizontally within container
+    height: 44px;
   }
 }
 
