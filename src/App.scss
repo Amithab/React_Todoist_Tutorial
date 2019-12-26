@@ -67,3 +67,92 @@ $generic-bg: #db4c3f;
   -ms-user-select: none;
   user-select: none;
 }
+
+@mixin btn($width) { // generic button
+  width: $width;
+  background-color: $generic-bg;
+  color: #fff !important;
+  border: 1px solid transparent;
+  margin-right: 5px;
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 13px !important;
+  line-height: 17px;
+  padding: 6px 12px 7px 12px;
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+  border-radius: 3px !important;
+  text-decoration: none !important;
+  text-align: center;
+  cursor: pointer; // The cursor to display when over the element
+}
+
+@mixin cancel() {
+  color: #555;
+  cursor: pointer;
+  font-size: 14px;
+  margin: 2px 5px;
+}
+
+@mixin task-item() {
+  list-style-type: none; // The marker for each list element
+  display: flex;
+  line-height: 18px;
+  color: #333;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  font-size: 14px;
+  border-bottom: 1px solid #f0f0f0;
+  cursor: pointer;
+
+  &:hover { // Same as task-item:hover, so when someone hovers over a task item
+    background-color: #f9f9f9;
+  }
+}
+
+@mixin mq($from) { // media query, ex. mq(750 pixels)
+  @media (max-width: $from) {
+    @content;
+  }
+}
+
+/* Darkmode
+*/
+.darkmode {
+  header {
+    -webkit-box-shadow: 0 1px 3px 0 rgba(0,0,0,0.15);
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,0.15);
+    background-color: #282828;
+    border-color: transparent;
+  }
+}
+
+/* Header
+*/
+header {
+  border-bottom: solid 1px #ca2100;
+  background-color: $generic-bg;
+  transition: height 200ms ease-in; // ease-in means slow start for transition of height to and from new value
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  height: 44px;
+  z-index: 400;
+  position: fixed;
+  top: 0;
+  width: 100%;
+
+  @include mq('900px') { // responsive
+    padding: 0 10px;
+  }
+
+  nav {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+  }
+}
+
