@@ -176,10 +176,10 @@ header {
         text-align: right;
 
         ul {
-          float: right;
+          float: right; // moves element to the very right of the container
 
           li {
-            @include va; // what does this do?
+            @include va; // center items in container horizontally and vertically
 
             list-style-type: none;
             cursor: pointer;
