@@ -38,7 +38,7 @@ $generic-border: 1px solid #f1f1f1;
 $generic-bg: #db4c3f;
 
 /* Mixins - ways to inject styles wherever
-*/
+ ========================== */
 @mixin box-overlay() {
   box-shadow: $generic-box-shadow;
   position: absolute;
@@ -119,7 +119,7 @@ $generic-bg: #db4c3f;
 }
 
 /* Darkmode
-*/
+ ========================== */
 .darkmode {
   header {
     -webkit-box-shadow: 0 1px 3px 0 rgba(0,0,0,0.15);
@@ -130,7 +130,7 @@ $generic-bg: #db4c3f;
 }
 
 /* Header
-*/
+ ========================== */
 header {
   border-bottom: solid 1px #ca2100;
   background-color: $generic-bg;
@@ -211,7 +211,7 @@ header {
 }
 
 /* Sidebar
-*/
+ ========================== */
 .sidebar {
   @include no-select(); // no highlighting with cursor
   width: 266px;
@@ -349,7 +349,7 @@ header {
 }
 
 /* Show Confirm Delete
-*/
+ ========================== */
 .project-delete-modal {
   position: relative;
 
@@ -381,7 +381,7 @@ header {
 }
 
 /* Main Content
-*/
+ ========================== */
 .content {
   display: grid;
   align-items: center;
@@ -391,7 +391,7 @@ header {
 }
 
 /* Tasks
-*/
+ ========================== */
 .tasks {
   width: 656px;
   background-color: white;
@@ -451,7 +451,7 @@ header {
 }
 
 /* Add Task
-*/
+ ========================== */
 .add-task {
   &__overlay {
     background: rbga(102, 102, 102, 0.5);
@@ -504,6 +504,38 @@ header {
     color: gray;
     margin: 20px 10px;
   }
+
+  &__project {
+    margin-right: 0;
+  }
+
+  &__content {
+    width: 100%;
+    border: 1px solid #ddd;
+    background-color: white !important;
+    border-radius: 3px;
+    height: 35px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  &__cancel, &__submit {
+    @include no-select;
+  }
+
+  &__cancel {
+    @include cancel();
+  }
+
+  &__submit {
+    @include btn(90px);
+  }
+}
+
+.add-task__shallow, .add-project {
+  @include no-select;
+  cursor: pointer;
+  margin-bottom: 20px;
 }
 
 .add-task__plus, .add-project__plus {
@@ -518,8 +550,41 @@ header {
   margin-left: 15px;
 }
 
+/* Task Date
+ ========================== */
+.task-date {
+  @include box-overlay();
+  background-color: #fff;
+  width: 200px;
+  right: 0;
+
+  &__list li {
+    @include task-item();
+
+    span:first-of-type {
+      margin-right: 10px;
+
+      svg {
+        fill: grey;
+      }
+    }
+  }
+}
+
+/* Project Overlay
+ ========================== */
+.project-overlay {
+  @include box-overlay();
+  background-color: white;
+
+  &__list li {
+    @include task-item();
+  }
+}
+
+
 /* Add Project
-*/
+ ========================== */
 .add-project {
   padding-left: 13px;
   padding-right: 20px;
