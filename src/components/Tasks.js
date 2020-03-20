@@ -14,12 +14,20 @@ export const Tasks = () => {
   let projectName = '';
 
   // do not target inbox, today, next 7
-  if (projects && selectedProject && !collatedTasksExist(selectedProject)) {
+  /*if (projects && selectedProject && !collatedTasksExist(selectedProject)) {
     projectName = getTitle(projects, selectedProject).name;
-  }
+  }*/
 
   if (collatedTasksExist(selectedProject) && selectedProject) {
     projectName = getCollatedTitle(collatedTasks, selectedProject).name;
+  }
+
+  if (
+    projects.length > 0 &&
+    selectedProject &&
+    !collatedTasksExist(selectedProject)
+  ) {
+    projectName = getTitle(projects, selectedProject).name;
   }
 
   // like a hook that does life cycle methods like component mount

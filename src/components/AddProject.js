@@ -9,7 +9,7 @@ export const AddProject = ({ shouldShow = false }) => {
 
   const projectId = generatePushId();
   // need to update context
-  const { setProjects } = useProjectsValue(); // goes to firebase and gets projects
+  const { projects, setProjects } = useProjectsValue(); // goes to firebase and gets projects
 
   const addProject = () =>
     projectName &&
@@ -22,7 +22,7 @@ export const AddProject = ({ shouldShow = false }) => {
         userId: 'YTCbNkMbAgfNL3xCBV2u'
       })
       .then(() => {
-        setProjects([]); // send empty project to call firebase and refresh
+        setProjects([...projects]); // never have empty array to call firebase and refresh
         setProjectName('');
         setShow(false);
       });

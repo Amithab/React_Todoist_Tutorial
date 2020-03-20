@@ -232,13 +232,19 @@ header {
     padding-right: 15px;
 
     &:hover .sidebar__project-delete {
-      display: block;
+      display: flex;
     }
   }
 
   &__project { // needs to be fixed to projects since class is sidebar__projects
     padding: 5px 0;
     cursor: pointer;
+
+    div:nth-child(1) {
+      width: 100%;
+      display: flex;
+      align-items: center;
+    }
 
     &-delete { // project and project-delete
       margin-left: auto;
@@ -371,7 +377,7 @@ header {
     }
 
     button {
-      @include btn(50px);
+      @include btn('50px');
     }
     span {
       @include cancel();
@@ -528,7 +534,7 @@ header {
   }
 
   &__submit {
-    @include btn(90px);
+    @include btn('90px');
   }
 }
 
@@ -605,7 +611,7 @@ header {
   }
 
   &__submit {
-    @include btn(100px);
+    @include btn('100px');
   }
 
   &__cancel {
