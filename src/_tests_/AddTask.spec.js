@@ -227,7 +227,7 @@ describe('<AddTask />', () => {
     });
 
     // Add task with task date overlay choosing today
-    it('renders <AddTask /> and adds a task with a task date', () => {
+    it('renders <AddTask /> and adds a task with a task date of TODAY', () => {
       useSelectedProjectValue.mockImplementation(() => ({
         selectedProject: '1',
       }));
@@ -249,10 +249,85 @@ describe('<AddTask />', () => {
       expect(queryByTestId('task-date-overlay')).toBeTruthy();
 
       fireEvent.click(queryByTestId('task-date-today'));
-      expect(queryByTestId('task-date-overlay')).toBeFalsy(); // overlay should go away
+      expect(queryByTestId('task-date-overlay')).toBeFalsy(); // Overlay should go away
+
+      fireEvent.click(queryByTestId('show-task-date-overlay')); // Click the task date calendar
+      expect(queryByTestId('task-date-overlay')).toBeTruthy();
+
+      fireEvent.keyDown(queryByTestId('task-date-today'));
+      expect(queryByTestId('task-date-overlay')).toBeFalsy(); // Overlay should go away
 
       fireEvent.click(queryByTestId('add-task'));
     });
+
+    // Add task with task date overlay choosing tomorrow
+    it('renders <AddTask /> and adds a task with a task date of TOMORROW', () => {
+      useSelectedProjectValue.mockImplementation(() => ({
+        selectedProject: '1',
+      }));
+
+      const { queryByTestId } = render(<AddTask showMain />);
+      fireEvent.click(queryByTestId('show-main-action'));
+      expect(queryByTestId('add-task-content')).toBeTruthy(); // input form
+      expect(queryByTestId('add-task-main')).toBeTruthy();
+
+
+      fireEvent.change(queryByTestId('add-task-content'), {
+        target: { value: 'I am the most amazing task ever!'}
+      });
+      expect(queryByTestId('add-task-content').value).toBe(
+        'I am the most amazing task ever!'
+      );
+
+      fireEvent.click(queryByTestId('show-task-date-overlay')); // Click the task date calendar
+      expect(queryByTestId('task-date-overlay')).toBeTruthy();
+
+      fireEvent.click(queryByTestId('task-date-tomorrow'));
+      expect(queryByTestId('task-date-overlay')).toBeFalsy(); // Overlay should go away
+
+      fireEvent.click(queryByTestId('show-task-date-overlay')); // Click the task date calendar
+      expect(queryByTestId('task-date-overlay')).toBeTruthy();
+
+      fireEvent.keyDown(queryByTestId('task-date-tomorrow'));
+      expect(queryByTestId('task-date-overlay')).toBeFalsy(); // Overlay should go away
+
+      fireEvent.click(queryByTestId('add-task'));
+    });
+
+    // Add task with task date overlay choosing next 7
+    it('renders <AddTask /> and adds a task with a task date of NEXT_7', () => {
+      useSelectedProjectValue.mockImplementation(() => ({
+        selectedProject: '1',
+      }));
+
+      const { queryByTestId } = render(<AddTask showMain />);
+      fireEvent.click(queryByTestId('show-main-action'));
+      expect(queryByTestId('add-task-content')).toBeTruthy(); // input form
+      expect(queryByTestId('add-task-main')).toBeTruthy();
+
+
+      fireEvent.change(queryByTestId('add-task-content'), {
+        target: { value: 'I am the most amazing task ever!'}
+      });
+      expect(queryByTestId('add-task-content').value).toBe(
+        'I am the most amazing task ever!'
+      );
+
+      fireEvent.click(queryByTestId('show-task-date-overlay')); // Click the task date calendar
+      expect(queryByTestId('task-date-overlay')).toBeTruthy();
+
+      fireEvent.click(queryByTestId('task-date-next-week'));
+      expect(queryByTestId('task-date-overlay')).toBeFalsy(); // Overlay should go away
+
+      fireEvent.click(queryByTestId('show-task-date-overlay')); // Click the task date calendar
+      expect(queryByTestId('task-date-overlay')).toBeTruthy();
+
+      fireEvent.keyDown(queryByTestId('task-date-next-week'));
+      expect(queryByTestId('task-date-overlay')).toBeFalsy(); // Overlay should go away
+
+      fireEvent.click(queryByTestId('add-task'));
+    });
+
 
 
   });
