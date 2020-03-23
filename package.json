@@ -3,16 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^8.0.5",
+    "@testing-library/user-event": "^7.2.1",
     "coverage": "^0.4.1",
     "firebase": "^6.2.4",
-    "moment": "^2.24.0",
     "node-sass": "^4.13.1",
-    "react": "^16.11.0",
-    "react-dom": "^16.11.0",
-    "react-icons": "^3.8.0",
-    "react-moment": "^0.9.7",
-    "react-scripts": "^3.3.0"
+    "moment": "^2.24.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-icons": "^3.9.0",
+    "react-scripts": "3.4.1"
   },
   "scripts": {
     "start": "react-scripts start",
