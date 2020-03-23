@@ -13,8 +13,8 @@ import { IndividualProject } from './IndividualProject';
       projects.map(project => (
         <li
           key={project.projectId}
+          data-testid="project-action-parent"
           data-doc-id={project.docId}
-          data-testid="project-action"
           className={
             active === project.projectId
               ? 'active sidebar__project'
@@ -23,6 +23,7 @@ import { IndividualProject } from './IndividualProject';
         >
           <div
             role="button"
+            data-testid="project-action"
             tabIndex={0}
             aria-label={`Select ${project.name} as the task project`}
             onClick={() => {
